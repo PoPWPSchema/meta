@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPWPSchema\Meta\TypeResolvers\InputObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
 use PoP\ComponentModel\TypeResolvers\InputObjectType\AbstractInputObjectTypeResolver;
 use PoPWPSchema\Meta\Constants\MetaQueryCompareByOperators;
@@ -19,6 +20,7 @@ class MetaQueryCompareByKeyInputObjectTypeResolver extends AbstractInputObjectTy
     }
     final protected function getMetaQueryCompareByKeyOperatorEnumTypeResolver(): MetaQueryCompareByKeyOperatorEnumTypeResolver
     {
+        /** @var MetaQueryCompareByKeyOperatorEnumTypeResolver */
         return $this->metaQueryCompareByKeyOperatorEnumTypeResolver ??= $this->instanceManager->getInstance(MetaQueryCompareByKeyOperatorEnumTypeResolver::class);
     }
 
@@ -27,6 +29,9 @@ class MetaQueryCompareByKeyInputObjectTypeResolver extends AbstractInputObjectTy
         return 'MetaQueryCompareByKeyInput';
     }
 
+    /**
+     * @return array<string,InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return [

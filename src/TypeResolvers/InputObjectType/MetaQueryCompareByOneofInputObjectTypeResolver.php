@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPWPSchema\Meta\TypeResolvers\InputObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoP\ComponentModel\TypeResolvers\InputObjectType\AbstractOneofInputObjectTypeResolver;
 
 class MetaQueryCompareByOneofInputObjectTypeResolver extends AbstractOneofInputObjectTypeResolver
@@ -19,6 +20,7 @@ class MetaQueryCompareByOneofInputObjectTypeResolver extends AbstractOneofInputO
     }
     final protected function getMetaQueryCompareByKeyInputObjectTypeResolver(): MetaQueryCompareByKeyInputObjectTypeResolver
     {
+        /** @var MetaQueryCompareByKeyInputObjectTypeResolver */
         return $this->metaQueryCompareByKeyInputObjectTypeResolver ??= $this->instanceManager->getInstance(MetaQueryCompareByKeyInputObjectTypeResolver::class);
     }
     final public function setMetaQueryCompareByNumericValueInputObjectTypeResolver(MetaQueryCompareByNumericValueInputObjectTypeResolver $metaQueryCompareByNumericValueInputObjectTypeResolver): void
@@ -27,6 +29,7 @@ class MetaQueryCompareByOneofInputObjectTypeResolver extends AbstractOneofInputO
     }
     final protected function getMetaQueryCompareByNumericValueInputObjectTypeResolver(): MetaQueryCompareByNumericValueInputObjectTypeResolver
     {
+        /** @var MetaQueryCompareByNumericValueInputObjectTypeResolver */
         return $this->metaQueryCompareByNumericValueInputObjectTypeResolver ??= $this->instanceManager->getInstance(MetaQueryCompareByNumericValueInputObjectTypeResolver::class);
     }
     final public function setMetaQueryCompareByStringValueInputObjectTypeResolver(MetaQueryCompareByStringValueInputObjectTypeResolver $metaQueryCompareByStringValueInputObjectTypeResolver): void
@@ -35,6 +38,7 @@ class MetaQueryCompareByOneofInputObjectTypeResolver extends AbstractOneofInputO
     }
     final protected function getMetaQueryCompareByStringValueInputObjectTypeResolver(): MetaQueryCompareByStringValueInputObjectTypeResolver
     {
+        /** @var MetaQueryCompareByStringValueInputObjectTypeResolver */
         return $this->metaQueryCompareByStringValueInputObjectTypeResolver ??= $this->instanceManager->getInstance(MetaQueryCompareByStringValueInputObjectTypeResolver::class);
     }
     final public function setMetaQueryCompareByArrayValueInputObjectTypeResolver(MetaQueryCompareByArrayValueInputObjectTypeResolver $metaQueryCompareByArrayValueInputObjectTypeResolver): void
@@ -43,6 +47,7 @@ class MetaQueryCompareByOneofInputObjectTypeResolver extends AbstractOneofInputO
     }
     final protected function getMetaQueryCompareByArrayValueInputObjectTypeResolver(): MetaQueryCompareByArrayValueInputObjectTypeResolver
     {
+        /** @var MetaQueryCompareByArrayValueInputObjectTypeResolver */
         return $this->metaQueryCompareByArrayValueInputObjectTypeResolver ??= $this->instanceManager->getInstance(MetaQueryCompareByArrayValueInputObjectTypeResolver::class);
     }
 
@@ -56,6 +61,9 @@ class MetaQueryCompareByOneofInputObjectTypeResolver extends AbstractOneofInputO
         return false;
     }
 
+    /**
+     * @return array<string, InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return [

@@ -36,6 +36,7 @@ abstract class AbstractMetaQueryInputObjectTypeResolver extends AbstractQueryabl
     }
     final protected function getMetaQueryValueTypesEnumTypeResolver(): MetaQueryValueTypeEnumTypeResolver
     {
+        /** @var MetaQueryValueTypeEnumTypeResolver */
         return $this->metaQueryValueTypesEnumTypeResolver ??= $this->instanceManager->getInstance(MetaQueryValueTypeEnumTypeResolver::class);
     }
     final public function setMetaQueryCompareByOneofInputObjectTypeResolver(MetaQueryCompareByOneofInputObjectTypeResolver $metaQueryCompareByOneofInputObjectTypeResolver): void
@@ -44,6 +45,7 @@ abstract class AbstractMetaQueryInputObjectTypeResolver extends AbstractQueryabl
     }
     final protected function getMetaQueryCompareByOneofInputObjectTypeResolver(): MetaQueryCompareByOneofInputObjectTypeResolver
     {
+        /** @var MetaQueryCompareByOneofInputObjectTypeResolver */
         return $this->metaQueryCompareByOneofInputObjectTypeResolver ??= $this->instanceManager->getInstance(MetaQueryCompareByOneofInputObjectTypeResolver::class);
     }
     final public function setStringScalarTypeResolver(StringScalarTypeResolver $stringScalarTypeResolver): void
@@ -52,6 +54,7 @@ abstract class AbstractMetaQueryInputObjectTypeResolver extends AbstractQueryabl
     }
     final protected function getStringScalarTypeResolver(): StringScalarTypeResolver
     {
+        /** @var StringScalarTypeResolver */
         return $this->stringScalarTypeResolver ??= $this->instanceManager->getInstance(StringScalarTypeResolver::class);
     }
     final public function setRelationEnumTypeResolver(RelationEnumTypeResolver $relationEnumTypeResolver): void
@@ -60,6 +63,7 @@ abstract class AbstractMetaQueryInputObjectTypeResolver extends AbstractQueryabl
     }
     final protected function getRelationEnumTypeResolver(): RelationEnumTypeResolver
     {
+        /** @var RelationEnumTypeResolver */
         return $this->relationEnumTypeResolver ??= $this->instanceManager->getInstance(RelationEnumTypeResolver::class);
     }
     final public function setAllowOrDenySettingsService(AllowOrDenySettingsServiceInterface $allowOrDenySettingsService): void
@@ -68,6 +72,7 @@ abstract class AbstractMetaQueryInputObjectTypeResolver extends AbstractQueryabl
     }
     final protected function getAllowOrDenySettingsService(): AllowOrDenySettingsServiceInterface
     {
+        /** @var AllowOrDenySettingsServiceInterface */
         return $this->allowOrDenySettingsService ??= $this->instanceManager->getInstance(AllowOrDenySettingsServiceInterface::class);
     }
 
@@ -76,6 +81,9 @@ abstract class AbstractMetaQueryInputObjectTypeResolver extends AbstractQueryabl
         return $this->__('Filter by meta key and value. The key must be allowed access in the Settings. See: https://developer.wordpress.org/reference/classes/wp_meta_query/', 'meta');
     }
 
+    /**
+     * @return array<string, InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return [
@@ -174,12 +182,12 @@ abstract class AbstractMetaQueryInputObjectTypeResolver extends AbstractQueryabl
      *
      * @see https://developer.wordpress.org/reference/classes/wp_meta_query/
      *
-     * @param array<string, mixed> $query
+     * @param array<string,mixed> $query
      * @param stdClass|stdClass[]|array<stdClass[]> $inputValue
      */
     public function integrateInputValueToFilteringQueryArgs(array &$query, stdClass|array $inputValue): void
     {
-        /** @var array $inputValue */
+        /** @var stdClass[] $inputValue */
         $metaQuery = [];
 
         /**

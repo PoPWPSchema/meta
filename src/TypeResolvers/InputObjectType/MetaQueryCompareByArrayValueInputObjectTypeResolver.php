@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPWPSchema\Meta\TypeResolvers\InputObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
 use PoP\ComponentModel\TypeResolvers\InputObjectType\AbstractInputObjectTypeResolver;
 use PoP\ComponentModel\TypeResolvers\ScalarType\AnyBuiltInScalarScalarTypeResolver;
@@ -21,6 +22,7 @@ class MetaQueryCompareByArrayValueInputObjectTypeResolver extends AbstractInputO
     }
     final protected function getAnyBuiltInScalarScalarTypeResolver(): AnyBuiltInScalarScalarTypeResolver
     {
+        /** @var AnyBuiltInScalarScalarTypeResolver */
         return $this->anyBuiltInScalarScalarTypeResolver ??= $this->instanceManager->getInstance(AnyBuiltInScalarScalarTypeResolver::class);
     }
     final public function setMetaQueryCompareByArrayValueOperatorEnumTypeResolver(MetaQueryCompareByArrayValueOperatorEnumTypeResolver $metaQueryCompareByArrayValueOperatorEnumTypeResolver): void
@@ -29,6 +31,7 @@ class MetaQueryCompareByArrayValueInputObjectTypeResolver extends AbstractInputO
     }
     final protected function getMetaQueryCompareByArrayValueOperatorEnumTypeResolver(): MetaQueryCompareByArrayValueOperatorEnumTypeResolver
     {
+        /** @var MetaQueryCompareByArrayValueOperatorEnumTypeResolver */
         return $this->metaQueryCompareByArrayValueOperatorEnumTypeResolver ??= $this->instanceManager->getInstance(MetaQueryCompareByArrayValueOperatorEnumTypeResolver::class);
     }
 
@@ -37,6 +40,9 @@ class MetaQueryCompareByArrayValueInputObjectTypeResolver extends AbstractInputO
         return 'MetaQueryCompareByArrayValueInput';
     }
 
+    /**
+     * @return array<string,InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return [
